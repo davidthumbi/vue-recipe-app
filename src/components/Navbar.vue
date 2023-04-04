@@ -1,10 +1,10 @@
 <template>
-  <header class="bg-white shadow h-16 flex justify-between items-stretch">
+  <header class="bg-white shadow h-24 flex justify-between items-stretch">
     <router-link
       :to="{ name: 'home' }"
       class="inline-flex items-center h-full px-5 text-orange-500 font-bold"
     >
-      Home
+      <img src="../assets/logo.png" alt="alt" class="h-20" />
     </router-link>
     <div class="flex items-center gap-1 text-orange-500">
       <router-link

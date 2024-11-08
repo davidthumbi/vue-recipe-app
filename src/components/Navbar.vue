@@ -2,7 +2,7 @@
   <header class="bg-white shadow h-24 flex justify-between items-center px-5 md:px-10">
     <!-- Logo -->
     <router-link :to="{ name: 'home' }" class="inline-flex items-center h-full text-orange-500 font-bold">
-      <img src="../assets/logo.png" alt="alt" class="h-20" />
+      <img src="../assets/logo.png" alt="alt" class="h-12 md:h-20" />
     </router-link>
 
     <!-- Desktop Navigation Links (Visible on Larger Screens) -->

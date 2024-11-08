@@ -7,6 +7,9 @@
 
     <!-- Desktop Navigation Links (Visible on Larger Screens) -->
     <nav class="hidden md:flex gap-4 text-orange-500">
+      <router-link :to="{ name: 'home' }" class="px-4 py-2 transition-colors hover:bg-orange-500 hover:text-white">
+        Home
+      </router-link>
       <router-link :to="{ name: 'byName' }" class="px-4 py-2 transition-colors hover:bg-orange-500 hover:text-white">
         Search Meals
       </router-link>
@@ -30,6 +33,12 @@
     <!-- Mobile Dropdown Menu -->
     <div v-if="isOpen" class="absolute top-24 left-0 w-full bg-white shadow-lg md:hidden">
       <nav class="flex flex-col items-start p-4 text-orange-500">
+        <router-link 
+          @click="closeMenu" 
+          :to="{ name: 'home' }" 
+          class="w-full px-4 py-3 transition-colors hover:bg-orange-500 hover:text-white rounded-md">
+          Home
+        </router-link>
         <router-link 
           @click="closeMenu" 
           :to="{ name: 'byName' }" 

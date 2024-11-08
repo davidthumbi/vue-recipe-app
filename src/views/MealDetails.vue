@@ -39,7 +39,7 @@
           </template>
         </ul>
       </div>
-      <div class="mt-4">
+      <div class="mt-8">
         <YouTubeButton :href="meal.strYoutube" />
         <a
           :href="meal.strSource"

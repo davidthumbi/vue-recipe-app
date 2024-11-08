@@ -11,9 +11,9 @@
     </router-link>
     <div class="p-3">
       <h3 class="font-bold">{{ meal.strMeal }}</h3>
-      <p class="mb-4">
-  {{ meal.strInstructions }}
-</p>
+       <p class="mb-4">
+        {{ $filters.truncateWords(meal.strInstructions, 20) }}
+      </p>
       <div class="flex items-center justify-between">
         <YouTubeButton :href="meal.strYoutube" />
       </div>

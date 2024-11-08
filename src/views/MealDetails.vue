@@ -18,7 +18,7 @@
       {{ meal.strInstructions }}
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-1">
+    <div class="grid grid-cols-1">
       <div>
         <h2 class="text-2xl font-semibold mb-2">Ingredients</h2>
         <ul>

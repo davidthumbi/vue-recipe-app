@@ -5,7 +5,20 @@
       <img src="../assets/logo.png" alt="alt" class="h-20" />
     </router-link>
 
-    <!-- Hamburger Button (Visible on Mobile) -->
+    <!-- Desktop Navigation Links (Visible on Larger Screens) -->
+    <nav class="hidden md:flex gap-4 text-orange-500">
+      <router-link :to="{ name: 'byName' }" class="px-4 py-2 transition-colors hover:bg-orange-500 hover:text-white">
+        Search Meals
+      </router-link>
+      <router-link :to="{ name: 'byLetter' }" class="px-4 py-2 transition-colors hover:bg-orange-500 hover:text-white">
+        Meals By Letter
+      </router-link>
+      <router-link :to="{ name: 'ingredients' }" class="px-4 py-2 transition-colors hover:bg-orange-500 hover:text-white">
+        Meals By Ingredients
+      </router-link>
+    </nav>
+
+    <!-- Mobile Menu Button (Visible on Smaller Screens) -->
     <button 
       @click="isOpen = !isOpen" 
       class="md:hidden text-orange-500 p-2 focus:outline-none focus:ring-2 focus:ring-orange-500">
@@ -14,18 +27,29 @@
       </svg>
     </button>
 
-    <!-- Navigation Links (Responsive) -->
-    <nav :class="['flex-col', 'md:flex-row', 'items-center', 'gap-1', 'text-orange-500', 'md:flex', isOpen ? 'flex' : 'hidden']" class="flex md:flex items-center">
-      <router-link :to="{ name: 'byName' }" class="px-2 py-2 md:py-0 transition-colors hover:bg-orange-500 hover:text-white">
-        Search Meals
-      </router-link>
-      <router-link :to="{ name: 'byLetter' }" class="px-2 py-2 md:py-0 transition-colors hover:bg-orange-500 hover:text-white">
-        Meals By Letter
-      </router-link>
-      <router-link :to="{ name: 'ingredients' }" class="px-2 py-2 md:py-0 transition-colors hover:bg-orange-500 hover:text-white">
-        Meals By Ingredients
-      </router-link>
-    </nav>
+    <!-- Mobile Dropdown Menu -->
+    <div v-if="isOpen" class="absolute top-24 left-0 w-full bg-white shadow-lg md:hidden">
+      <nav class="flex flex-col items-start p-4 text-orange-500">
+        <router-link 
+          @click="closeMenu" 
+          :to="{ name: 'byName' }" 
+          class="w-full px-4 py-3 transition-colors hover:bg-orange-500 hover:text-white rounded-md">
+          Search Meals
+        </router-link>
+        <router-link 
+          @click="closeMenu" 
+          :to="{ name: 'byLetter' }" 
+          class="w-full px-4 py-3 transition-colors hover:bg-orange-500 hover:text-white rounded-md">
+          Meals By Letter
+        </router-link>
+        <router-link 
+          @click="closeMenu" 
+          :to="{ name: 'ingredients' }" 
+          class="w-full px-4 py-3 transition-colors hover:bg-orange-500 hover:text-white rounded-md">
+          Meals By Ingredients
+        </router-link>
+      </nav>
+    </div>
   </header>
 </template>
 
@@ -33,11 +57,16 @@
 export default {
   data() {
     return {
-      isOpen: false, // controls the visibility of the mobile menu
+      isOpen: false, // Controls the visibility of the mobile dropdown menu
     };
   },
+  methods: {
+    closeMenu() {
+      this.isOpen = false; // Closes the menu when a link is clicked
+    },
+  },
   watch: {
-    // Close the menu when resizing to desktop
+    // Closes the menu when navigating to a different route
     $route() {
       this.isOpen = false;
     },
@@ -46,10 +75,10 @@ export default {
 </script>
 
 <style scoped>
-/* Add responsive styling to control the display of the nav links */
+/* Basic styling for responsiveness */
 @media (min-width: 768px) {
-  nav {
-    display: flex !important; /* Ensures the nav menu is displayed on larger screens */
+  .absolute {
+    display: none; /* Hide the mobile dropdown on larger screens */
   }
 }
 </style>
